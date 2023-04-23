@@ -94,10 +94,11 @@ for i in range(30):
 	j1s.append(round(orig, 3))
 
 for j in j1s:
-	j1 = julia_set(MIN_X, MAX_X, MIN_Y, MAX_Y, j, False)
-	j2 = julia_set(MIN_X, MAX_X, MIN_Y, MAX_Y, 0, False)
+	j1 = julia_set(MIN_X, MAX_X, MIN_Y, MAX_Y, 0.2 + j, False)
+	j2 = julia_set(MIN_X, MAX_X, MIN_Y, MAX_Y, 0.2, False)
 	sensitivity = comparative_sensitivity(j1, j2)
-	print(f"The ratio of the sensitivity of J_(C + h*u) on J_C when C = 0, h = {j}, u = <1, 0> is {sensitivity/j}.")
+	with open("continuousSensitivity.txt", "a") as f:
+		f.write(f"The ratio of the sensitivity of J_(C + h*u) on J_C when C = 0.2, h = {j}, u = <1, 0> is {sensitivity/j}.\n")
 
 
 
