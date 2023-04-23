@@ -85,7 +85,14 @@ def julia_set(x_min, x_max, y_min, y_max, C, toSave):
 def comparative_sensitivity(J_a, J_b):
 	return (len(J_a) + len(J_b) - 2*intersection(J_a, J_b)) / (len(J_a))
 
-j1s = [0.2, 0.15, 0.1, 0.09, 0.08, 0.07, 0.06, 0.05, 0.04, 0.03, 0.02, 0.01]
+# j1s = [0.2, 0.15, 0.1, 0.09, 0.08, 0.07, 0.06, 0.05, 0.04, 0.03, 0.02, 0.01]
+
+orig = 0.04
+j1s = [orig]
+for i in range(30):
+	orig -= 0.001
+	j1s.append(round(orig, 3))
+
 for j in j1s:
 	j1 = julia_set(MIN_X, MAX_X, MIN_Y, MAX_Y, j, False)
 	j2 = julia_set(MIN_X, MAX_X, MIN_Y, MAX_Y, 0, False)
